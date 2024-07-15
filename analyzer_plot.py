@@ -14,7 +14,7 @@ print("Analyse plot start... pls wait")
 
 csv_file_source = "./csv"
 graph_file_source = "./graph"
-csv_files = ["{csv_file_source}/{fn}" for fn in os.listdir(csv_file_source)]
+csv_files = [f"{csv_file_source}/{fn}" for fn in os.listdir(csv_file_source)]
 
 for csv_file in csv_files:
     df = pd.read_csv(csv_file, sep=';')
@@ -56,6 +56,6 @@ for csv_file in csv_files:
 
     plt.tight_layout()  # Pour éviter que les étiquettes des axes ne se chevauchent
     # plt.show()
-    plt.savefig("{graph_file_source}/graph_{(csv_file.split('/')[-1])[5:]}.png")
+    plt.savefig(f"{graph_file_source}/graph_{(csv_file.split('/')[-1])[5:]}.png")
 
-print("Analyse plot fini !")
+print("Analyse plot done !")

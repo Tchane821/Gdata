@@ -14,7 +14,7 @@ print("Analyse stats start... pls wait")
 
 csv_file_source = "./csv"
 res_file_source = "./results.csv"
-csv_files = ["{csv_file_source}/{fn}" for fn in os.listdir(csv_file_source)]
+csv_files = [f"{csv_file_source}/{fn}" for fn in os.listdir(csv_file_source)]
 
 # Check if res file exists and create if no
 res_file = open(res_file_source, "w")
@@ -66,3 +66,5 @@ for csv_file in csv_files:
             f"%% EXT ISO :\t{(nb_ext_iso / nb_ext_tt * 100):0.3f}\n"
         )
         print(string_stats)
+
+print("Analyse stats done !")

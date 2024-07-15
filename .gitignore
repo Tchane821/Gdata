@@ -4,3 +4,4 @@ csv/
 data/
 graph/
 results.csv
+/main_run_all.py
