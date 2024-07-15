@@ -1,3 +1,7 @@
+"""
+Created by Tchane821 - 2024
+For convert CXP files in CSV files
+"""
 import os
 from datetime import date
 
@@ -6,7 +10,7 @@ file_source = "./data"
 file_out = "./csv"
 data_start_idx = 213
 
-print("Convertion start... pls wait")
+print("Conversion start... pls wait")
 
 # LIST OF FILES
 files_names = [f"{file_source}/{file_name}" for file_name in os.listdir(file_source)]
@@ -14,8 +18,13 @@ files_names = [f"{file_source}/{file_name}" for file_name in os.listdir(file_sou
 
 # CXP TO CSV
 def get_attributes(tab_txt):
+    """
+
+    :param tab_txt:
+    :return:
+    """
     res = dict()
-    res["exo"] = ('-'.join(tab_txt[1][1].split(" ")[:3])).replace('/', '-')
+    res["exe"] = ('-'.join(tab_txt[1][1].split(" ")[:3])).replace('/', '-')
     res["id"] = tab_txt[21][1]
     res["nb_samples"] = int(tab_txt[11][1])
     res["age"] = date.today().year - int(tab_txt[24][1].split("/")[2])
@@ -26,10 +35,19 @@ def get_attributes(tab_txt):
 
 
 def get_data(tab_txt):
+    """
+
+    :param tab_txt:
+    :return:
+    """
     return tab_txt[data_start_idx:-1]
 
 
 def cxp2csv(file_name):
+    """
+
+    :param file_name:
+    """
     with open(file_name) as fn:
         file_stream = fn.read()
         tab_txt = [line.strip().split("\t") for line in file_stream.split("\n")]
@@ -42,9 +60,9 @@ def cxp2csv(file_name):
         # for line in data:
         #     print(line)
 
-    file_out_name = (f"{file_out}/{file_name.split("/")[1]}_s{attributes["nb_samples"]}_a{attributes["age"]}"
-                     f"_i{attributes["id"]}_e{attributes["exo"]}_x{attributes["sex"]}"
-                     f"_w{attributes["weight"]}_h{attributes["height"]}.csv")
+    file_out_name = (f'{file_out}/{file_name.split("/")[1]}_s{attributes["nb_samples"]}_a{attributes["age"]}'
+                     f'_i{attributes["id"]}_e{attributes["exe"]}_x{attributes["sex"]}'
+                     f'_w{attributes["weight"]}_h{attributes["height"]}.csv')
     with open(file_out_name, 'w') as nf:
         nf.write("force;vitesse;position\n")
         for line in data:
@@ -55,4 +73,4 @@ def cxp2csv(file_name):
 for file_name in files_names:
     cxp2csv(file_name)
 
-print("Conversion fini !")
+print("Conversion done !")

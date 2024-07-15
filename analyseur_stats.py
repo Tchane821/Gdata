@@ -1,3 +1,7 @@
+"""
+Created by Tchane821 - 2024
+For analyse data with stats in array
+"""
 import pandas as pd
 import os
 import sys
@@ -9,11 +13,12 @@ SEUIL_FORCE = 15.0
 print("Analyse stats start... pls wait")
 
 csv_file_source = "./csv"
-res_file_source = "./resultats.csv"
-csv_files = [f"{csv_file_source}/{fn}" for fn in os.listdir(csv_file_source)]
+res_file_source = "./results.csv"
+csv_files = ["{csv_file_source}/{fn}" for fn in os.listdir(csv_file_source)]
 
 # Check if res file exists and create if no
 res_file = open(res_file_source, "w")
+# noinspection SpellCheckingInspection
 res_file.write("ID;TTcorrectValues;TTFLE;TTEXT;ISOFLE;ISOEXT\n")
 res_file.close()
 
@@ -21,7 +26,7 @@ res_file.close()
 target_speed = sys.argv[0] if len(sys.argv) > 1 else 230
 
 for csv_file in csv_files:
-    with open(csv_file, "r") as data_stream:
+    with open(csv_file) as data_stream:
         df = pd.read_csv(data_stream, sep=';')
         # print(df.head())
         # print(df.dtypes)

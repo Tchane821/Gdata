@@ -1,3 +1,7 @@
+"""
+Created by Tchane821 - 2024
+For analyse data with graphics
+"""
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -10,15 +14,15 @@ print("Analyse plot start... pls wait")
 
 csv_file_source = "./csv"
 graph_file_source = "./graph"
-csv_files = [f"{csv_file_source}/{fn}" for fn in os.listdir(csv_file_source)]
+csv_files = ["{csv_file_source}/{fn}" for fn in os.listdir(csv_file_source)]
 
 for csv_file in csv_files:
     df = pd.read_csv(csv_file, sep=';')
     # print(df.head())
     # print(df.dtypes)
 
-    # Filtre (0 speed c'est niette)
-    df = df[abs(df['vitesse']) > SEUIL_VITESSE]   # speed < 0.1 => delete
+    # Filter)
+    df = df[abs(df['vitesse']) > SEUIL_VITESSE]  # speed < 0.1 => delete
     df = df[abs(df['force']) > SEUIL_FORCE]  # torque < 2.0 => delete
 
     # Tracer les graphiques
@@ -52,6 +56,6 @@ for csv_file in csv_files:
 
     plt.tight_layout()  # Pour éviter que les étiquettes des axes ne se chevauchent
     # plt.show()
-    plt.savefig(f"{graph_file_source}/graph_{(csv_file.split('/')[-1])[5:]}.png")
+    plt.savefig("{graph_file_source}/graph_{(csv_file.split('/')[-1])[5:]}.png")
 
 print("Analyse plot fini !")

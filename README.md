@@ -35,7 +35,7 @@
 
 ### B.a. Convertir CXP en CSV :
 
-Le scrypt **converteur.py** permet de transformer tous les fichiers qui se trouvent dans le dossier **data**,
+Le scrypt **converter.py** permet de transformer tous les fichiers qui se trouvent dans le dossier **data**,
 en CSV dans le dossier **csv**.  
 Pour l'exécuter, taper la commande ```python converteur.py```.
 
