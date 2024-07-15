@@ -19,7 +19,7 @@ csv_files = [f"{csv_file_source}/{fn}" for fn in os.listdir(csv_file_source)]
 # Check if res file exists and create if no
 res_file = open(res_file_source, "w")
 # noinspection SpellCheckingInspection
-res_file.write("ID;TTcorrectValues;TTFLE;TTEXT;ISOFLE;ISOEXT\n")
+res_file.write("NB_SAMPLE;AGE;ID;EXE;SEX;WEIGHT;HEIGHT;NBTTG;NBTTFLE;NBTTEXT;NBISOFLE;NBISOEXT\n")
 res_file.close()
 
 # get speed argument, default = 230
@@ -51,8 +51,10 @@ for csv_file in csv_files:
                     nb_ext_iso += 1
 
         with open(res_file_source, "a") as res_stream:
-            res_stream.write(
-                f"{csv_file.split("/")[2]};{nb_ext_tt + nb_fle_tt};{nb_fle_tt};{nb_ext_tt};{nb_fle_iso};{nb_ext_iso}\n")
+            f_name = csv_file.split("/")[2][5:-4].split('_')
+            attribs = [str(string[1:]) for string in f_name]
+            data = [str(sdt) for sdt in [nb_ext_tt + nb_fle_tt, nb_fle_tt, nb_ext_tt, nb_fle_iso, nb_ext_iso]]
+            res_stream.write(f"{';'.join(attribs + data)}\n")
 
         string_stats = (
             f"---\n\tFor : {csv_file.split("/")[2]}\n"
