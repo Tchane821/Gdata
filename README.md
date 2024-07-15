@@ -37,22 +37,37 @@
 
 Le scrypt **converter.py** permet de transformer tous les fichiers qui se trouvent dans le dossier **data**,
 en CSV dans le dossier **csv**.  
-Pour l'exécuter, taper la commande ```python converteur.py```.
+Pour l'exécuter, taper la commande ```python converter.py```.
 
 - Ce script est nécessaire avant de lancer les autres.
 - Ne mettre que des fichiers CXP dans le dossier data.
 
 ### B.b. Analyse graphique :
 
-Le script **analyseur_plot.py** permet de générer des graphiques à partir des fichiers CSV.  
+Le script **analyzer_plot.py** permet de générer des graphiques à partir des fichiers CSV.  
 Ces graphiques sont sauvegardés dans le dossier **graph**.  
-Pour l'exécuter, taper la commande ```python analyseur_plot.py```.
+Pour l'exécuter, taper la commande ```python analyzer_plot.py```.
 
 ### B.c. Analyse chiffrée :
 
-Le script **analyseur_stats** permet de créer un fichier CSV de résultats contenant les valeurs calculées pour tous les
+Le script **analyzer_stats** permet de créer un fichier CSV de résultats contenant les valeurs calculées pour tous les
 fichiers data.  
-Pour l'exécuter, taper la commande ```python analyseur_stats.py```.
+Pour l'exécuter, taper la commande ```python analyzer_stats.py```.
+
+Les colonnes du fichier **result.csv** correspondent à :
+
+- NB_SAMPLE : Nombre d'enregistrements fait par la machine.
+- AGE : Age du patient.
+- ID : Identifiant du patient.
+- EXE : Nom de l'exercice réalisait par le patient.
+- SEX : Sex du patient.
+- WEIGHT : Poids du patient.
+- HEIGHT : Taille du patient.
+- NBTTG : Nombre total d'enregistrement conservé après les filtres.
+- NBTTFLE : Nombre total d'enregistrement en flexion après les filtres.
+- NBTTEXT : Nombre total d'enregistrements en extension après les filtres.
+- NBISOFLE : Nombre total d'enregistrements en flexions et en iso après les filtres.
+- NBISOEXT : Nombre total d'enregistrements en extensions et en iso après les filtres.
 
 ---
 
